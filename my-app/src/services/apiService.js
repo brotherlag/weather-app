@@ -6,7 +6,6 @@ export const defaultSearchParams = {
         lon: 25.0136,
         unit: 'metric',
         lang: 'en',
-    
 };
 
 export async function getWeather(data = null) {

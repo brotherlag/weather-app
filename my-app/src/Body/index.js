@@ -2,10 +2,10 @@ import { useState } from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Button from 'react-bootstrap/Button';
-import TimeSelecter from './TimeSelecter';
-import Map from './Map';
 import './body.scss';
 import SearchBar from './SerachBar';
+import Now from './Tabs/Now';
+import Forecast from './Tabs/Forecast';
 
 
 function Body() {
@@ -17,9 +17,11 @@ function Body() {
     return (
         <>
             <Button variant="primary" onClick={handleShowBar}>
-                Launch
+                Search
             </Button>
-            <SearchBar show={showBar} handleClose={handleCloseBar}/>
+
+            <SearchBar show={showBar} handleClose={handleCloseBar} />
+
             <Tabs
                 defaultActiveKey="now"
                 id="fill-tab-example"
@@ -27,14 +29,11 @@ function Body() {
                 fill
             >
                 <Tab eventKey="now" title="Now">
-                    <TimeSelecter id="now" />
-                    <Map />
+                    <Now />
                 </Tab>
                 <Tab eventKey="forecast" title="Forecast">
-                    <TimeSelecter id="forecast" />
-                    <Map />
+                    <Forecast />
                 </Tab>
-
             </Tabs>
         </>
     );

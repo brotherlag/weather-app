@@ -1,8 +1,8 @@
-import Form from 'react-bootsrap/Form';
-import Button from 'react-bootstrap/Button';
-import { getWeather } from '../services/apiService';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';    
+import { getWeather, defaultSearchParams } from '../services/apiService';
 
-function SearchForm(defaultProps) {
+function SearchForm() {
 
     const units = [
         'standard',
@@ -13,9 +13,9 @@ function SearchForm(defaultProps) {
     const languages = [
         { code: 'en', label: 'English' },
         { code: 'fi', label: 'Finnish' },
+        { code: 'de', label: 'German' },
         { code: 'ru', label: 'Russian' },
         { code: 'swe', label: 'Swedish' },
-        { code: 'zh_cn', label: 'Chineese Simplified' },
     ];
 
     const handleSubmit = async (event) => {
@@ -26,10 +26,10 @@ function SearchForm(defaultProps) {
             lat: event.target.lat.value,
             lon: event.target.lon.value,
             units: event.target.unit.value,
-            lang: event.targte.lang.value,
+            lang: event.target.lang.value,
         };
-        
-        const weather = await getWeather();
+
+        const weather = await getWeather(data);
         const response = await weather.json();
         console.log('response', response);
         console.log(data);
@@ -40,11 +40,11 @@ function SearchForm(defaultProps) {
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-4">
                 <Form.Label>Latitude</Form.Label>
-                <Form.Control type="text" name="lat" placeholder="41.92734" defaultValue={defaultProps.lat} />
+                <Form.Control type="text" name="lat" placeholder="41.92734" defaultValue={defaultSearchParams.lat} />
             </Form.Group>
             <Form.Group className="mb-4">
                 <Form.Label>Longetude</Form.Label>
-                <Form.Control type="text" name="lon" placeholder="2.179934" defaultValue={defaultProps.lon} />
+                <Form.Control type="text" name="lon" placeholder="2.179934" defaultValue={defaultSearchParams.lon} />
             </Form.Group>
             <Form.Group>
                 <Form.Label>Units of measurement</Form.Label>
@@ -56,13 +56,13 @@ function SearchForm(defaultProps) {
                         key={unit}
                         name="units"
                         value={unit}
-                        defaultChecked={defaultProps.unit === unit}
+                        defaultChecked={defaultSearchParams.unit === unit}
                     />
                 ))}
             </Form.Group>
             <Form.Group className="my-4">
                 <Form.Label>Languge</Form.Label>
-                <Form.Select name="lang" defaultValue={defaultProps.lang}>
+                <Form.Select name="lang" defaultValue={defaultSearchParams.lang}>
                     {languages.map((language, i) => (
                         <option key={language.code} value={language.code}>{language.label}</option>
                     ))}
@@ -75,11 +75,5 @@ function SearchForm(defaultProps) {
     )
 }
 
-SearchForm.defaultProps = {
-    lat: '58.5953',
-    lon: '25.0136',
-    unit: 'metric',
-    lang: 'en',
-};
 
 export default SearchForm;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 
-function TimeSelecter(props) {
+function TimeSelector(props) {
   const [radioValue, setRadioValue] = useState('1');
 
   const radios = [
@@ -38,4 +38,4 @@ function TimeSelecter(props) {
   );
 }
 
-export default TimeSelecter;
+export default TimeSelector;

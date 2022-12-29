@@ -3,7 +3,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Button from 'react-bootstrap/Button';
 import './body.scss';
-import SearchBar from './SerachBar';
+import SearchBar from './SearchBar';
 import Now from './Tabs/Now';
 import Forecast from './Tabs/Forecast';
 

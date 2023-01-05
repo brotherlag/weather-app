@@ -1,6 +1,6 @@
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import ExportDataForm from './ExportDataForm';
-import SearchForm from './SearchForm';
+import Offcanvas from "react-bootstrap/Offcanvas";
+import ExportDataForm from "./ExportDataForm";
+import SearchForm from "./SearchForm";
 
 function SearchBar({ show, handleClose }) {
     return (

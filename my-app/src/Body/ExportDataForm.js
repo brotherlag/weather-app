@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { getWeather, getForecast, defaultSearchParams } from "../services/apiService";
@@ -27,15 +27,19 @@ function ExportDataForm() {
         get({
             ...defaultSearchParams,
             mode,
-        })
-            .then((response) => response.text())
-            .then((data) => {
-                const objectData = JSON.parse(data);
-                if (objectData.cod !== 200)
+        })  
+            .then(async (response) => {
+                
+                if(!response.ok) {
+                    const objectData = await response.json();
                     throw Error(objectData.message);
+                }
+                const data = await response.text();
                 window.open('about:blank').document.body.append(data)
             })
-            .catch((error) => setErrorMessage(error.message));
+            .catch((error) => {
+                setErrorMessage(error.message);
+            });
     };
 
     return (

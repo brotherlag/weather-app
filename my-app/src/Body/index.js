@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
-import Button from 'react-bootstrap/Button';
-import './body.scss';
-import SearchBar from './SearchBar';
-import Now from './Tabs/Now';
-import Forecast from './Tabs/Forecast';
+import { useState } from "react";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+import Button from "react-bootstrap/Button";
+import "./body.scss";
+import SearchBar from "./SearchBar";
+import Now from "./Tabs/Now";
+import Forecast from "./Tabs/Forecast";
 
 
 function Body() {

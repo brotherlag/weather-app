@@ -1,6 +1,6 @@
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';    
-import { getWeather, defaultSearchParams } from '../services/apiService';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";    
+import { getWeather, defaultSearchParams } from "../services/apiService";
 
 function SearchForm() {
 
@@ -56,7 +56,7 @@ function SearchForm() {
                         key={unit}
                         name="units"
                         value={unit}
-                        defaultChecked={defaultSearchParams.unit === unit}
+                        defaultChecked={defaultSearchParams.units === unit}
                     />
                 ))}
             </Form.Group>

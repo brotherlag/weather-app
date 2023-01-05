@@ -28,7 +28,6 @@ function TimeSelector({ data }) {
     });
   };
 
-
   useEffect(() => {
     const days = [];
     const hours = [];

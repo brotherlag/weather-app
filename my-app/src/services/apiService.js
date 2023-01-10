@@ -25,3 +25,4 @@ export async function getForecast(data = null) {
     return await fetch(`${apiUrl}/forecast?${params}`)
     
 }
+

@@ -24,48 +24,63 @@ function TimeSelector({ data }) {
 
       cbFn(item, day, hour);
     });
-  },[data]);
+  }, [data]);
 
   useEffect(() => {
     const days = [];
     const hours = [];
 
     getCurrentData((item, day, hour) => {
-      if(!days.includes(day)) {
+      if (!days.includes(day)) {
         days.push(day);
       }
 
-      if(!hours.includes(hour)) {
+      if (!hours.includes(hour)) {
         hours.push(hour);
       }
     });
 
     setDays(days);
-    setHours(hours);
+    setHours(hours.sort());
     setSelectedDay(days[0]);
     setSelectedHour(hours[0]);
-    if(data) {
+    if (data) {
       setCurrentData(data.list[0]);
     }
-  },[data, getCurrentData]);
+  }, [data, getCurrentData]);
 
   const handleOnChangeDays = (event) => {
     setSelectedDay(event.currentTarget.value);
+
     getCurrentData((item, day, hour) => {
-      if(selectedDay === day && selectedHour === hour) {
-        setCurrentData(item);
+      if (event.currentTarget.value === days[0]) {
+        const firstActiveHour = hours.find(
+          (hour) => !checkDatePast(days[0], hour)
+        );
+        if (event.currentTarget.value === day && firstActiveHour === hour) {
+          setSelectedHour(firstActiveHour);
+          setCurrentData(item);
+        }
+      } else {
+        if (event.currentTarget.value === day && selectedHour === hour) {
+          setCurrentData(item);
+        }
       }
     });
-  }
+  };
 
   const handleOnChangeHours = (event) => {
     setSelectedHour(event.currentTarget.value);
-    getCurrentData((item, day, hour) => { 
-      if(selectedDay === day && selectedHour === hour) {
+    getCurrentData((item, day, hour) => {
+      if (selectedDay === day && event.currentTarget.value === hour) {
         setCurrentData(item);
       }
     });
-  }
+  };
+
+  const checkDatePast = (day, hour) => moment().unix() >
+    moment(`${day} ${hour}`, "DD.MM.YY HH:mm").unix();
+
 
   return (
     <>
@@ -96,12 +111,16 @@ function TimeSelector({ data }) {
             value={hour}
             checked={hour === selectedHour}
             onChange={handleOnChangeHours}
+            disabled={
+              checkDatePast(days[0], hour) &&
+              selectedDay === days[0]
+            }
           >
             {hour}
           </ToggleButton>
         ))}
       </ButtonGroup>
-      <Data data={currentData} /> 
+      <Data data={currentData} />
     </>
   );
 }

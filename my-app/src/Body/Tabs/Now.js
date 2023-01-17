@@ -4,10 +4,9 @@ import { getWeather } from "../../services/apiService";
 import ErrorModal from "../../ErrorModal";
 import Data from "./Data";
 
-function Now() {
-    
+function Now({ weatherData, setWeatherData }) {
+
     const [errorMessage, setErrorMessage] = useState(null);
-    const [weatherData, setWeatherData] = useState(null);
 
     useEffect(() => {
         (async function () {
@@ -15,22 +14,23 @@ function Now() {
                 const response = await getWeather();
                 const data = await response.json();
 
-                if(data.cod !== 200)
-                    throw Error(data.message);
+                if (data.cod !== 200) throw Error(data.message);
 
-                setWeatherData(data);    
+                setWeatherData(data);
             } catch (error) {
                 console.log(error);
                 setErrorMessage(error.message);
             }
         })()
-    }, []);
+    }, [setWeatherData]);
 
     return (
-        <>  
+        <>
             <Data data={weatherData} />
-            <Map />
-            <ErrorModal message={errorMessage} handleClose={() => setErrorMessage(null)} />
+            <Map weatherData={weatherData} />
+            <ErrorModal
+                message={errorMessage}
+                handleClose={() => setErrorMessage(null)} />
         </>
     );
 }

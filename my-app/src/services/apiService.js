@@ -9,7 +9,6 @@ export const defaultSearchParams = {
 };
 
 export async function getWeather(data = null) {
-    // data.appid = apiKey;
     const params = new URLSearchParams({
         ...(data || defaultSearchParams),
         appid: apiKey,

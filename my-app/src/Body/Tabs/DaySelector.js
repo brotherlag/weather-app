@@ -4,7 +4,7 @@ import ToggleButton from "react-bootstrap/ToggleButton";
 import HourSelector from "./HourSelector";
 import moment from "moment";
 
-function DaySelector({ setCurrentData, data, getCurrentData }) {
+function DaySelector({ data, getCurrentData }) {
     const [selectedDay, setSelectedDay] = useState(0);
     const [days, setDays] = useState([]);
     const [hours, setHours] = useState([]);
@@ -59,7 +59,6 @@ function DaySelector({ setCurrentData, data, getCurrentData }) {
                 ))}
             </ButtonGroup>
             <HourSelector
-                getCurrentData={setCurrentData}
                 hours={hours}
                 selectedDay={selectedDay}
             />

@@ -13,6 +13,13 @@ function Map({ weatherData}) {
         lng: weatherData?.coord.lon || defaultSearchParams.lon,
     };
 
+    const roundTemp = (temp) => {
+        if(temp) {
+            return 0 < temp ? Math.ceil(temp) : Math.floor(temp);
+        }
+        return temp;
+    };
+
     return (
         <>
             {isLoaded && (
@@ -22,7 +29,7 @@ function Map({ weatherData}) {
                     zoom={10}
                 >
                     <InfoWindow position={center}>
-                        <div>{weatherData?.main.temp}</div>
+                        <div>{roundTemp(weatherData?.main.temp)}</div>
                     </InfoWindow>
                 </GoogleMap>
             )}

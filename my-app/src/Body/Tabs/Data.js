@@ -1,6 +1,15 @@
 import Table from "react-bootstrap/Table";
 
 function Data({ data }) {
+
+    const roundTemp = (temp) => {
+        if(temp) {
+            return 0 < temp ? Math.ceil(temp) : Math.floor(temp);
+        }
+        return temp;
+    };
+
+
     return (
         <Table striped bordered hover>
             <tbody>

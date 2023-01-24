@@ -16,7 +16,7 @@ function Body() {
     const handleShowBar = () => dispatch(setShowSearchBar(true));
 
     return (
-        <>
+        <div>
             <Button className="mb-4" variant="primary" onClick={handleShowBar}>
                 Search
             </Button>
@@ -36,7 +36,7 @@ function Body() {
                     <Forecast />
                 </Tab>
             </Tabs>
-        </>
+        </div>
     );
 }
 

@@ -1,19 +1,4 @@
 @import "~bootstrap/scss/bootstrap";
+@import "./Styles/variables";
+@import "./Styles/mixins";
 
-.container {
-    display: flex;
-    flex-direction: column;
-    min-width: 100%;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-Header{
-    font-size: 35px;
-    position: relative;
-    margin: auto;
-    text-align: center;
-    padding-left: 20px;
-}

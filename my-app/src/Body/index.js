@@ -20,9 +20,7 @@ function Body() {
             <Button className="mb-4" variant="primary" onClick={handleShowBar}>
                 Search
             </Button>
-
             <SearchBar />
-
             <Tabs
                 defaultActiveKey="now"
                 id="fill-tab-example"

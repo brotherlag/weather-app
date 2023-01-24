@@ -1,10 +1,13 @@
+@import "~bootstrap/scss/bootstrap";
+@import "../Styles/variables";
+@import "../Styles/mixins";
 
 
-.div{
-    background-color: rgba(107, 107, 107, 0.336);
-    position: relative;
-    max-width: 1000px;
-    height: auto;
-    margin: auto;
-    text-align: center;
+.div {
+    background-color:$body-background-color;
+    position: $body-position;
+    max-width: $body-max-width;
+    height: $body-height;
+    margin: $body-margin;
+    align-items: $body-align-items;
 }
